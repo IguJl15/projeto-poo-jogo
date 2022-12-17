@@ -17,7 +17,7 @@ describe("test board utils success cases", () => {
   const tmpFileContent = `00SSPPF3B2PPEE00`;
   writeFileSync(tmpFile.name, tmpFileContent);
 
-  const board = BoardUtils.fromFile(tmpFile.name)
+  const board = BoardUtils.loadLevelFromFile(tmpFile.name)
 
   it("should create a board", () => {
     assert.ok(board);
@@ -64,7 +64,7 @@ describe("test board utils failure cases", () => {
     //                                             \ wrong character (!)
 
     assert.throws(() => {
-      BoardUtils.fromFile(tmpFile.name);
+      BoardUtils.loadLevelFromFile(tmpFile.name);
     }, {
       value: resolve(tmpFile.name),
       row: 0,
@@ -74,7 +74,7 @@ describe("test board utils failure cases", () => {
 
   it("should throw a FileNotFound Exception if the file does not exists", () => {
     assert.throws(() => {
-      BoardUtils.fromFile("foo");
+      BoardUtils.loadLevelFromFile("foo");
     }, {
       value: "foo",
       row: 0,

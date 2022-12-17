@@ -2,7 +2,7 @@ import Position from "./Position";
 
 interface EffectPosition extends Position {
     effectSteps: number;
-    effectDirection: 'forward' | 'backward';
+    description: string;
 }
 
 export default EffectPosition;
